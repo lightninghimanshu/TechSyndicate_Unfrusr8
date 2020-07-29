@@ -175,14 +175,16 @@ export default class App extends React.Component {
 
 
 
-
-
-
-
-
-  addTodo(props) {
+addTodo(props) {
+    console.log("called")
     let text = props;
-    console.log(userid);
+    let truethy = false;
+    for (let i = 0; i < this.state.todos.length; i++) {
+      if (this.state.todos[i]['text'] == text) {
+        truethy=true;
+      }
+    }
+    if (!truethy) {
     fetch(
       'http://ec2-52-203-153-53.compute-1.amazonaws.com:8001/api/user/Todo_create/',
       {
@@ -212,8 +214,13 @@ export default class App extends React.Component {
       todos: [...this.state.todos, { id: id++, text: text, checked: false }],
       textinbox: '',
     });
+  }if(truethy){
+    truethy=false
+    text=''
+    console.log("done")
+    alert("Todo already added!")
   }
-
+  }
   removeTodo(id) {
     for (let i = 0; i < this.state.todos.length; i++) {
       if (this.state.todos[i]['id'] == id) {
