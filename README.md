@@ -1,3 +1,5 @@
+The project has been Suspended, but still can be used for audit purposes.
+
 Git Repository for Techsyndicate - Hackathon
 
 Team: METAVERSE
